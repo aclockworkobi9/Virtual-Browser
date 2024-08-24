@@ -22,30 +22,30 @@ This guide outlines the steps to set up a Jenkins CI/CD pipeline with various in
 3. **Update and Upgrade System**
 ```bash
    sudo apt update && sudo apt upgrade -y
-  ![image](https://github.com/user-attachments/assets/18c25b96-c05b-44ba-9d45-b9a2892b2807)
  ```
+![image](https://github.com/user-attachments/assets/18c25b96-c05b-44ba-9d45-b9a2892b2807)
 
 
 4. **Install Java**
 ```bash
-   sudo apt update
    sudo apt install openjdk-11-jdk -y
 ```
 
 5. **Run Jenkins on a specific port (replace [custom_port] with an actual port number, e.g., 8080)**
 ```bash
   wget https://get.jenkins.io/war-stable/2.426.2/jenkins.war
-  java -jar jenkins.war --httpPort=8080
+  java -jar jenkins.war --httpPort=custom_port [except 8080 because we are running our application on it]
 ```
 
 6. **Access Jenkins**
-   - Navigate to `http://<your-ip>:custom_port`
+   - Navigate to `http://<your-ip>:custom_port [except 8080 because we are running our application on it]`
 
 7. **Retrieve Jenkins Admin Password**
 ```bash
    cat /path/to/jenkins/secrets/initialAdminPassword
-  ![image](https://github.com/user-attachments/assets/918abd65-6f26-44ab-a439-301e95363fdf)
+  
 ```
+![image](https://github.com/user-attachments/assets/918abd65-6f26-44ab-a439-301e95363fdf)
 
 8. **Install Suggested Jenkins Plugins**
    - During the initial Jenkins setup, install the suggested plugins when prompted.
