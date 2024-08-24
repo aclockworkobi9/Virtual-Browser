@@ -4,15 +4,18 @@
    - Open HTTP (port 80), SSH (port 22), and a custom TCP port range (3000-10000).
    - Open UDP port range (52000-52100).
    - Allocate up to 15 GB of storage.
-  ![image](https://github.com/user-attachments/assets/94cd3f8b-aea6-41b3-b4ca-511c4a84631d)
-  ![image](https://github.com/user-attachments/assets/bc99f72f-a1ca-465b-a5f8-2154a8fd5c1b)
+  ![security_group](https://github.com/user-attachments/assets/241c59e8-5613-4227-bbc8-7f9642ce7915)
+
+  ![storage](https://github.com/user-attachments/assets/effd0542-82a9-4c2d-911e-2f99b7623a6e)
+
 
 
 2. **Launch Instance:**
 
 3. **Update and Upgrade:**
    - Run the following commands to update and upgrade your instance:
- ![image](https://github.com/user-attachments/assets/7f10c9aa-2d24-45d2-a137-e07313331304)
+ ![update_upgrade_cmd](https://github.com/user-attachments/assets/a537d7ae-26d0-4151-9e68-cf289a504bff)
+
 
 4. **Install Java:**
 
@@ -38,7 +41,8 @@
      ```
 
 
- ![image](https://github.com/user-attachments/assets/e3d90bb3-a0b7-4544-b805-4532c508e461)
+ ![jenkins_start_page](https://github.com/user-attachments/assets/bbfe63b6-b960-41e5-a2c5-251905c73d64)
+
 
 8. **Install Suggested Plugins:**
    - Follow the prompts in Jenkins to install the suggested plugins.
@@ -53,9 +57,12 @@
       - **OWASP Dependency-Check Plugin**
       - **Docker Pipeline**
 
- ![image](https://github.com/user-attachments/assets/b1a251ae-d6ae-44bd-8f08-98583afe57bd)
- ![image](https://github.com/user-attachments/assets/ca2c7393-8be0-452f-9ce1-63c7ce437673)
- ![image](https://github.com/user-attachments/assets/d9743563-7a2f-4dbe-8619-f7b323e8129c)
+ ![Manage_jenkins](https://github.com/user-attachments/assets/388b2486-ef4b-4c16-a194-86ee24f3deab)
+
+ ![sonarqube](https://github.com/user-attachments/assets/279a96d9-4fdd-4593-8ffe-1b42b9a4ee60)
+
+ ![Docker](https://github.com/user-attachments/assets/d961a66e-a1a4-4465-8843-6192b23717c3)
+
 
  
  
@@ -79,7 +86,8 @@
       - **Docker**
       - **OWASP Dependency-Check**
       - **SonarQube Scanner**
- ![image](https://github.com/user-attachments/assets/c3104a50-bad2-4229-bdb8-20fcd7e36f77)
+![docker_unter_tools](https://github.com/user-attachments/assets/bb755c76-c5e4-4170-86ff-b4f791c95a5f)
+
 
 14. **Configure SonarQube in Jenkins:**
     - Go to **Manage Jenkins** > **Configure System**.
@@ -87,16 +95,20 @@
       - **SonarQube URL:** `http://<your-ip>:9000`
       - **Authentication Token:** Generate a token in SonarQube (go to **Administration** > **Security** > **Users** > **Generate Token**) and paste it in Jenkins under **SonarQube servers**..
  
- ![image](https://github.com/user-attachments/assets/4ac275ed-af1c-4e2e-804b-ef9a472630b8)
- ![image](https://github.com/user-attachments/assets/028d2724-4a94-4883-9f91-9c08c73b04e1)
- ![image](https://github.com/user-attachments/assets/70ae0b82-8beb-49a1-939a-dc055e03963d)
+ ![sonar-admin](https://github.com/user-attachments/assets/c4b70432-fc00-48eb-96eb-0624b512841f)
+
+ ![sonar-users](https://github.com/user-attachments/assets/115ef7e5-5b4a-4809-ad61-b9b78a6dd3cf)
+
+ ![sonar-token](https://github.com/user-attachments/assets/e658e045-1529-4080-ac4b-d043942bf541)
+
 
  
 15. **Add Docker Hub Credentials in Jenkins:**
     - Go to **Manage Jenkins** > **Manage Credentials**.
     - Add Docker Hub username and password.
 
- ![image](https://github.com/user-attachments/assets/1ecca55a-0437-4969-be28-c6e5a67c52f7)
+![sonar-token-added-jenkins](https://github.com/user-attachments/assets/a6e754ff-198f-4c7a-8b8c-550017c55ef4)
+
 
 
 16. **Create a Pipeline:**
@@ -106,11 +118,13 @@
 17. **Update Docker Compose:**
     - Replace the image name in your `docker-compose.yml` file with your Docker image name.
     - Build and run the Docker Compose configuration.
- ![image](https://github.com/user-attachments/assets/a2e40a95-d02c-427a-a836-8eb6faf27d33)
+![docker-compose](https://github.com/user-attachments/assets/d6afa4af-debe-4f19-8082-0a0c233a5869)
+
 
 18. **Access Jenkins:**
     - You can now access Jenkins through your browser at `http://<your-ip>:8080`.
- ![image](https://github.com/user-attachments/assets/caf9d1fa-e625-489c-8a3d-f03608192394)
+![final_result](https://github.com/user-attachments/assets/5eb9b899-ca91-4dc5-8d73-622d9d0ad756)
+
 
 ---
 
