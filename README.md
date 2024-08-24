@@ -1,72 +1,84 @@
 
-```markdown
 # Jenkins CI/CD Pipeline Setup Guide
-
 This guide outlines the steps to set up a Jenkins CI/CD pipeline with various integrations including Docker, SonarQube, and OWASP Dependency-Check.
 
 ## Prerequisites
-
 - AWS EC2 instance (t2.large recommended)
 - Basic knowledge of AWS, Jenkins, and Docker
 
 ## Setup Steps
-
-1. **Configure Security Group**
-   - Open HTTP (port 80), SSH (port 22), and custom TCP ports (3000-10000)
-   - Open UDP port range (52000-52100)
-   - Allocate up to 15 GB of storage
-   ![image](https://github.com/user-attachments/assets/ba46eceb-c70a-4e96-b6fa-860104f5355e)
-   ![image](https://github.com/user-attachments/assets/73771e83-8e7f-42b1-a7c4-8f2f6352f015)
+1. **Configure Security Group:**
+   - Open HTTP (port 80), SSH (port 22), and a custom TCP port range (3000-10000).
+   - Open UDP port range (52000-52100).
+   - Allocate up to 15 GB of storage.
+   
+   ![image](https://github.com/user-attachments/assets/f346576b-5991-46ab-bb22-4eba68a43143)
+   ![image](https://github.com/user-attachments/assets/9d468090-7aa8-4458-9503-c6e5202170a9)
 
   
 2. **Launch EC2 Instance**
    - Use t2.large instance type
 
 3. **Update and Upgrade System**
-   ```bash
+```bash
    sudo apt update && sudo apt upgrade -y
-   ![image](https://github.com/user-attachments/assets/0fea9c1c-2735-406d-92b3-9e73de029683)
-```
+  ![image](https://github.com/user-attachments/assets/18c25b96-c05b-44ba-9d45-b9a2892b2807)
+ ```
+
 
 4. **Install Java**
+```bash
+   sudo apt update
+   sudo apt install openjdk-11-jdk -y
+```
 
-5. **Download and Run Jenkins**
-   ```bash
-   wget https://get.jenkins.io/war-stable/2.426.2/jenkins.war
-   java -jar jenkins.war --httpPort=[custom_port]
-   ```
+5. **Run Jenkins on a specific port (replace [custom_port] with an actual port number, e.g., 8080)**
+```bash
+  wget https://get.jenkins.io/war-stable/2.426.2/jenkins.war
+  java -jar jenkins.war --httpPort=8080
+```
 
 6. **Access Jenkins**
    - Navigate to `http://<your-ip>:custom_port`
 
 7. **Retrieve Jenkins Admin Password**
-   ```bash
+```bash
    cat /path/to/jenkins/secrets/initialAdminPassword
   ![image](https://github.com/user-attachments/assets/918abd65-6f26-44ab-a439-301e95363fdf)
 ```
 
 8. **Install Suggested Jenkins Plugins**
+   - During the initial Jenkins setup, install the suggested plugins when prompted.
 
 9. **Install Additional Software**
-   - Docker
-   - Trivy
+   - Docker:
+     ```bash
+     sudo apt install docker.io -y
+     ```
+   - Trivy:
+     ```bash
+     sudo apt-get install wget apt-transport-https gnupg lsb-release
+     wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+     echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+     sudo apt-get update
+     sudo apt-get install trivy
+     ```
 
 10. **Install Jenkins Plugins**
-    - SonarQube Scanner
-    - OWASP Dependency-Check Plugin
-    - Docker Pipeline
-  ![image](https://github.com/user-attachments/assets/a6928fbd-d5b4-42e8-9519-c17f422fdfea)
-
-  ![image](https://github.com/user-attachments/assets/96c537fa-bedf-43b0-a4ff-bb1dcaf6ce45)
-
- ![image](https://github.com/user-attachments/assets/2be2d745-1dee-425f-892f-b52b0daddc41)
+    - Navigate to "Manage Jenkins" > "Manage Plugins" > "Available" tab
+    - Search for and install the following plugins:
+      - SonarQube Scanner
+      - OWASP Dependency-Check Plugin
+      - Docker Pipeline
 
 11. **Configure Docker Access**
+    Run one of the following commands to grant Jenkins access to Docker:
     ```bash
     sudo chmod 666 /var/run/docker.sock
     # or
-    sudo usermod -aG docker USER_NAME
+    sudo usermod -aG docker jenkins
     ```
+    Note: Replace 'jenkins' with the appropriate username if different in your setup.
 
 12. **Set Up SonarQube**
     ```bash
