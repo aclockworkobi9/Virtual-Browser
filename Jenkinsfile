@@ -7,7 +7,7 @@ pipeline {
     // Environment variables to be used in the pipeline
     environment {
         // Define SCANNER_HOME environment variable using a SonarQube scanner tool installation
-        SCANNER_HOME = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        SCANNER_HOME = tool name: 'sonar-scanner',
     }
 
     // Define the stages of the pipeline
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     // Use Docker registry credentials to authenticate the build process
-                    withDockerRegistry([credentialsId: 'docker-cred', url: '']) {
+                    withDockerRegistry([credentialsId: 'docker-cred', toolName: 'Docker']) {
                         // Change to the directory containing the Dockerfile and build the Docker image
                         dir('home/ubuntu/.Jenkins/workspace/Virtual-Browser/.docker/firefox') {
                             // Build Docker image with the specified tag
@@ -75,7 +75,7 @@ pipeline {
             steps {
                 script {
                     // Use Docker registry credentials to authenticate the push process
-                    withDockerRegistry([credentialsId: 'docker-cred', url: '']) {
+                    withDockerRegistry([credentialsId: 'docker-cred', toolName= 'Docker']) {
                         // Push the Docker image to the specified repository
                         sh "docker push aclockworkboi9/vb:latest"
                     }
