@@ -17,7 +17,7 @@ pipeline {
         stage('Git-checkout') {
             steps {
                 // Clone the repository and checkout the main branch
-                git branch: 'main', url: 'https://github.com/aclockworkobi9/Vitual-Browser.git'
+                git branch: 'main', url: 'https://github.com/aclockworkobi9/Virtual-Browser.git'
             }
         }
 
