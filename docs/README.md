@@ -1,6 +1,6 @@
 ---
 1. **Configure Security Group:**
-   - Open HTTP (port 80), SSH (port 22), and a custom TCP port range (3000-10000).
+   - Open HTTP port 80, SSH port 22, and a custom TCP port range 3000-10000.
    - Open UDP port range (52000-52100).
    - Allocate up to 15 GB of storage.
 
